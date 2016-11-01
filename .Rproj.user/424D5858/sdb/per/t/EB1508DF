@@ -1,0 +1,16 @@
+{
+    "contents" : "---\ntitle: \"tests of package mfergm\"\nauthor: \"Angelo Mele\"\ndate: \"Monday, June 22, 2015\"\noutput:\n  pdf_document:\n    keep_tex: yes\n---\n\n## short intro to see if it works\n\nFirst call the library\n```{r}\nlibrary(mfergm)\n```\n\nNow we want to compute entropy of a matrix\n\n```{r}\nmu <- matrix(c(0,0.2,0.2,0.2,0,0.2,0.2,0.2,0),\n           nrow = 3,\n           ncol = 3\n           )\nentropy(mu)\n```\n\nLet's now check the function for approximating the log constant of the ergm \nwith variational mean-field aprpoximations\n\nFirst we construct the variable `x` and matrix `mu`\n\n```{r}\nn <- 100\nx <- rnorm(n,0,1)\nmu <- matrix(runif(n^2,0,1), nrow = n, ncol = n)\ndiag(mu) <- 0 \n```\n\nNow let's get the variational mean-field approximation\n\n```{r}\np <- c(1,2)\nq <- 1\ndt <- matrix(0, ncol = p[2], nrow = 2)\ndt[,1] <- c(1,1)\ndt[,2] <- c(1,1)\n\ntheta = c(-3.0,1.5)\ntol = 0.000001 \n\npsi <- logconstant_mf(p, mu, theta, x, dt, tol) \npsi\n```\n\n\n## a model with no types\nConsider the model with utility given by\n$$ u_i (g) = \\alpha \\sum_j g_{ij} +\\frac{\\beta}{n} \\sum_i \\sum_j g_{ij}g_{jk}  $$\nThere is no heterogeneity in this model. We consider the following model\n```{r}\nset.seed(1977)\nn <- 100\nx <- rnorm(n,0,1)\n```\n\nNow let's get the variational mean-field appoximation\n\n```{r}\np <- c(1,2)\nq <- 1\ndt <- matrix(0, ncol = p[2], nrow = 2)\ndt[,1] <- c(1,1)\ndt[,2] <- c(1,1)\n\ntheta = c(-3.0,1.5)\ntol = 0.000001 \n\n\nnsim <- 100\nlogc <- rep(0,nsim)\nfor (sim in 1:nsim) {\n  mu <- matrix(runif(n^2,0,1), nrow = n, ncol = n)\n  diag(mu) <- 0 \n  psi <- logconstant_mf(p, mu, theta, x, dt, tol) \n  psi$psi\n  logc[sim] <- psi$psi\n}\nlogc\nsort(logc)\n```\n\n\n\n## a model with 2 types\n\n\n",
+    "created" : 1436818550412.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "856345028",
+    "id" : "EB1508DF",
+    "lastKnownWriteTime" : 1438612892,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/tests.Rmd",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}

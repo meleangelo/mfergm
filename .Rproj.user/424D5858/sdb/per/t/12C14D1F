@@ -1,0 +1,16 @@
+{
+    "contents" : "#' Compute log constant of ERGM using mean-field approximation\n#' \n#' This function computes the log-constant of the ERGM\n#' using a mean-field approximation of the model\n#' \n#' @param pp 2-dimensional array. the first entry \n#' indicates how many variables are in the direct utility. \n#' The second entry counts how many parameters.\n#' \n#' @param mu matrix of initial values for mu\n#' @param theta parameters of the ergm\n#' @param x matrix with individual nodes attributes\n#' @param dt matrix with indicator of which column of x and which change statistics to use\n#' @param tol tolerance for the iterative process\n#' \n#' @examples\n#' n <- 10   # small network\n#' x <- rnorm(n,0,1)  #attributes\n#' mu <- matrix(runif(n^2,0,1), nrow = n, ncol = n) #initialize matrix mu\n#' diag(mu) <- 0  #make sure mu has 0 diagonal\n\n#' # Now let's get the variational mean-field aprpoximation\n#' p <- c(1,2)  # 2 variables only\n#' q <- 1   # x has only 1 column\n#' dt <- matrix(0, ncol = p[2], nrow = 2) \n#' dt[,1] <- c(1,1)  # which column of x to consider \n#' dt[,2] <- c(1,1)  # which change stats to use\n\n#' theta = c(-3.0,1.5)  # parameters\n#' tol = 0.000001   # tolerance\n\n#' psi <- logconstant_mf(p, mu, theta, x, dt, tol)  #compute log-constant\n#' psi$psi  \n\nlogconstant_mf <- function(pp, mu, theta, x, dt, tol) {\n  n <- dim(mu)[1]\n  q <-max(1,dim(x)[2])\n  psi <- 0\n  logconstant_mf <- .Fortran(\"psi_mf\",\n                             n = as.integer(n),\n                             q = as.integer(q),\n                             pp = as.integer(pp),\n                             mu = matrix(as.double(mu), nrow = n),\n                             theta = as.double(theta),\n                             x = matrix(as.double(x), nrow = n, ncol = q ),\n                             dt = matrix(as.integer(dt), ncol = ncol(dt), nrow = nrow(dt)),\n                             tol = as.double(tol),\n                             psi = as.double(psi)  )\n  #return(logconstant_mf$psi)\n}",
+    "created" : 1467832120923.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2052708463",
+    "id" : "12C14D1F",
+    "lastKnownWriteTime" : 1443122857,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/mfergm/R/logconstant_mf.R",
+    "project_path" : "R/logconstant_mf.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

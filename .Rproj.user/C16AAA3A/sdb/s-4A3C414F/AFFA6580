@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#### tables for paper\nlibrary(mfergm)\nlibrary(xtable)\nrm(list=ls())\n\n\n###### n = 50 #####\n\n# model with edges and kstar2 (model1)\n\nnplayers <- 100  # number of players\ntrue_parameters <- c(-3,5.9) # true parameter vector\nnumber_of_simulations <- 100  # number of simulations\n\n# run simulations\nresults <- simulate.model1(theta = true_parameters, \n                           n = nplayers, \n                           nsims = number_of_simulations,\n                           ergm = FALSE, cd = TRUE, \n                           mfergm = FALSE, mple = TRUE)$estimates\n\n\n# make table \ntable_results <- matrix(NA, ncol = 9, nrow = 3)\n#table_results[1,2:13] <- colMeans(results)\nfor (i in 1:9) {\n  table_results[1,i] <- mean(results[,i])\n  table_results[2,i] <- median(results[,i])\n  table_results[3,i] <- sd(results[,i])\n}\ncolnames(table_results) <- c(\"MCMLE\", \"MCMLE\", \"MCMLE\", \"MF\", \"MF\", \"MF\", \"MPLE\", \"MPLE\", \"MPLE\")\n\nrownames(table_results) <- c(\"mean\", \"median\", \"se\")\n\n# latex table\nxtable(table_results, digits = 5)\n\n\n\n\n\n\n#### tables for paper\nlibrary(mfergm)\nlibrary(xtable)\nrm(list=ls())\n\n\n###### n = 50 #####\n\n# model with two types (model2)\n\nnplayers <- 100  # number of players\ntrue_parameters <- c(-3,1,10) # true parameter vector\nnumber_of_simulations <- 100  # number of simulations\n\n# run simulations\nresults <- simulate.model2(theta = true_parameters, \n                           n = nplayers, \n                           nsims = number_of_simulations,\n                           ergm = TRUE, \n                           mfergm = FALSE, mple = TRUE)$estimates\n\n\n# make table \ntable_results <- matrix(NA, ncol = 8, nrow = 3)\n#table_results[1,2:13] <- colMeans(results)\nfor (i in 1:8) {\n  table_results[1,i] <- mean(results[,i])\n  table_results[2,i] <- median(results[,i])\n  table_results[3,i] <- sd(results[,i])\n}\ncolnames(table_results) <- c(\"MCMLE\", \"MCMLE\", \"CD\", \"CD\", \"MF\", \"MF\", \"MPLE\", \"MPLE\")\n\nrownames(table_results) <- c(\"mean\", \"median\", \"se\")\n\n# latex table\nxtable(table_results, digits = 5)\n\nresults\n\n",
+    "created" : 1477939698018.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3572149453",
+    "id" : "AFFA6580",
+    "lastKnownWriteTime" : 1477961798,
+    "last_content_update" : 1477961798094,
+    "path" : "~/Dropbox/mfergm/programs/tables_prova.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

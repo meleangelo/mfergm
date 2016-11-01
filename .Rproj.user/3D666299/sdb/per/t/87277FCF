@@ -1,0 +1,16 @@
+{
+    "contents" : "loglik.model1 <- function(theta, tobs) {\n  # compute potential\n  potential <-sum(theta * tobs)\n  # mean-field approx\n  mus <- mfcd(theta[1],theta[2])  \n  mus <-as.numeric(mus[1,])\n  # compute kappa_mf\n  kmu <- array(NA,length(mus))\n  kmu <- theta[1]*mus + 0.5*theta[2]*(mus^2) - 0.5*(mus*log(mus)+(1-mus)*log(1-mus))\n  psi_mf <- max(kmu)\n  loglik <- potential - psi_mf\n  loglik <- -loglik\n  return(loglik)\n}\n",
+    "created" : 1444439755894.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2581925025",
+    "id" : "87277FCF",
+    "lastKnownWriteTime" : 1444439910,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/mfergm/R/loglik.model1.R",
+    "project_path" : "R/loglik.model1.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

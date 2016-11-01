@@ -1,0 +1,16 @@
+{
+    "contents" : "#' mean-field function for the Chatterjee-Disconis variational problem\n#' \n#' \n#' this function is the same as Chatterjee-Diaconis first order conditions\n#' \n#' @param p prob of link (mean field approximation)\n#' @param a parameter for edges term\n#' @param b parameter for 2-stars term\n#' \n#' @author Angelo Mele \n#' @examples \n#' phi_mfcd(p = 0.2, a = -2, b = 0.2)\n#' \n#' \n\n#phi_mfcd<-function(p,a,b) {\n#    phi_mfcd<-exp(2*a+2*b*p)/( 1+ exp(2*a+2*b*p) ) - p\n#    return(phi_mfcd)\n#}\nphi_mfcd<-function(p,a,b) {\n  phi_mfcd<-exp(2*a+2*b*p)/( 1+ exp(2*a+2*b*p) ) - p\n  return(phi_mfcd)\n}\n",
+    "created" : 1444431537307.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2337701791",
+    "id" : "A4D9D2C2",
+    "lastKnownWriteTime" : 1444487927,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/mfergm/R/phi_mfcd.R",
+    "project_path" : "R/phi_mfcd.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "loglikmfR.model1 <- function(theta, n, tobs, ninit = 50) {\n  # compute potential\n  potential <- as.numeric(theta[1]*tobs[1] + 0.5*theta[2]*tobs[2])\n  ## mf approximationa\n  # attributes\n  x <- rnorm(n,0,1)\n  \n  # parameters location\n  p <- c(1,2)\n  q <- 1\n  \n  # change stats to use\n  dt <- matrix(0, ncol = p[2], nrow = 2)\n  dt[,1] <- c(1,1)\n  dt[,2] <- c(1,1)\n  \n  tol <- 0.0001\n  logc <- rep(0,ninit)\n  for (sim in 1:ninit) {\n    # create initial symmetric matrix mu\n    mu <- matrix(runif(n^2,0,1), nrow = n, ncol = n)\n    mu[lower.tri(mu)] = t(mu)[lower.tri(mu)]\n    diag(mu) <- 0 \n    # use xi to avoid underflow with logs\n    xi<-log(mu/(1-mu))\n    diag(xi) <- 0\n    kmu <- c()\n    # compute weighted degrees of each player\n    degrj <- rowSums(mu) \n    kmu[1]<-theta[1]*sum(1/(1+exp(-xi))) +\n      0.5*theta[2]*sum( degrj^2-degrj )/n +\n      0.5*sum( log(1+exp(xi)) - xi/(1+exp(-xi)) )\n\n    eps <- 10\n    tol<-0.0001\n    iter<-1\n    #i<-1\n  \n      nminus1 <- n-1\n      for (i in 1:nminus1) {\n        i1<-i+1\n        for (j in i1:n) {\n          # xi update\n          #xijnew <- 2*theta[1] + (theta[2]/n)* sum(1/(1+exp(-xi[j,])) + 1/(1+exp(-xi[i,])))\n          #eps <-( 2*theta[1] + (0.5*theta[2]/n)* sum(1/(1+exp(-xi[j,])) + 1/(1+exp(-xi[i,]))) )*(1/(1+exp(-xijnew))-1/(1+exp(-xi[i,j]))) - \n      \n\n          xi[i,j] <- 2*theta[1] + (theta[2]/n)* sum(1/(1+exp(-xi[j,])) + 1/(1+exp(-xi[i,])))\n          xi[j,i] <- xi[i,j]\n          # compute bound \n          degrj <- rowSums(1/(1+exp(-xi))) \n          kmu[iter+1]<-theta[1]*sum(1/(1+exp(-xi))) +\n            0.5*theta[2]*sum( degrj^2-degrj )/n +\n            0.5*sum( log(1+exp(xi)) - xi/(1+exp(-xi)) )\n          \n#           kmu[iter+1]<-theta[1]*sum(1/(1+exp(-xi))) +\n#             .5*theta[2]*t(1/(1+exp(-xi))) %*% g %*% (1/(1+exp(-xi)))/(n-1) +\n#             sum(log(1+exp(xi)) - xi/(1+exp(-xi)))\n          eps<-abs(kmu[iter+1]-kmu[iter])  # compute change in bound\n          if (eps<tol) break\n          iter <- iter+1\n      #print(iter)\n      #print(eps)\n      #print(kmu[iter])\n      #print(kmu[iter+1])\n        }\n      }\n    \n    \n    logc[sim] <- kmu[iter]/(n^2)\n       \n \n    }\n  \n  psi_mf <- max(logc)\n  \n  # compute log likelihood value\n  loglik <- potential - psi_mf\n  #loglik <- -loglik\n  return(loglik)\n}\n\n\n\n\n  \n",
+    "created" : 1468507085371.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3127213649",
+    "id" : "644FF99F",
+    "lastKnownWriteTime" : 1447038195,
+    "last_content_update" : 1447038195,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/mfergm/R/loglikmfR.model1.R",
+    "project_path" : "R/loglikmfR.model1.R",
+    "properties" : {
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

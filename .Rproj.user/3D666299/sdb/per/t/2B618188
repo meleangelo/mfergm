@@ -1,0 +1,16 @@
+{
+    "contents" : "#' second derivative of variational problem in Chatterjee-Diaconis 2013\n#' \n#' this function is the second derivative of the variational problem \n#' \n#' @param p prob of link (mean field approximation)\n#' @param a parameter for edges term\n#' @param b parameter for 2-stars term\n#' \n#' @author Angelo Mele \n#' @examples \n#' phi_prime_mfcd(p = 0.2, a = -2, b = 0.2)\n#' \n#' \n\n#phi_prime_mfcd<-function(p,a,b) {\n#    phi_prime_mfcd<-2*b*exp(2*a+2*b*p)/(( 1+ exp(2*a+2*b*p) )^2)\n#    return(phi_prime_mfcd)\n#}\nphi_prime_mfcd<-function(p,a,b) {\n  #phi_prime_mfcd<- 2*b*exp(2*a+2*b*p)/(( 1+ exp(2*a+2*b*p) )^2)\n  phi_prime_mfcd<- 2*b*p*(1-p)\n  return(phi_prime_mfcd)\n}",
+    "created" : 1444431552394.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "307684662",
+    "id" : "2B618188",
+    "lastKnownWriteTime" : 1444491463,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/mfergm/R/phi_prime_mfcd.R",
+    "project_path" : "R/phi_prime_mfcd.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

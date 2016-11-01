@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "start <- proc.time()\ncd.est <- optimx(pars, loglik.model1, method = \"BFGS\", tobs = tobs[i,])\nend <- proc.time()\nend-start\nc<-end-start\nc\nclass(c)\n\n\nn <- 100\ntheta <- c(-2,3)\ng <- initialize.network(theta, n, directed = FALSE)\ng0 <- simulate(~edges+kstar(2), \n               nsim = 1, \n               coef = theta*c(2,1/n ),\n               basis = g,\n               control=control.simulate(\n                 MCMC.burnin=10000000,\n                 MCMC.interval=10000)\n)\nformula <- g0~edges+kstar(2)\ntobs <- summary(formula)/c(n^2/2,n^3)\ntobs\nmfcd(theta[1],theta[2])",
+    "created" : 1444416858683.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2627123508",
+    "id" : "9232E36B",
+    "lastKnownWriteTime" : 13229740524830817,
+    "last_content_update" : 0,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 0,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

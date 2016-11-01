@@ -1,0 +1,17 @@
+{
+    "contents" : "x <- seq(1,23,1)\nsent <- rnorm(23,0,1)\nsent2 <- rnorm(23,0,2)\nsent\nplot(x,sent, type = \"b\", ylim = c(-10,10))\nlines(x,sent2, type = \"b\", col = \"red\")\n\n\n\n",
+    "created" : 1444058964676.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3237113990",
+    "id" : "BE2A6709",
+    "lastKnownWriteTime" : 1444051275,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

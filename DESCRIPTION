@@ -1,0 +1,14 @@
+Package: mfergm
+Type: Package
+Title: Variational Mean-Field Approximations for the ERGM
+Version: 1.0
+Date: 2015-05-12
+Author: Angelo Mele <angelo.mele@jhu.edu>
+Maintainer: Angelo Mele <angelo.mele@jhu.edu>
+Description: This package provides methods and functions to perform mean-field
+    approximations for a large class of exponential random graph models (ERGM).
+Depends:
+    ergm,
+    network
+License: GPL
+RoxygenNote: 5.0.1

@@ -1,0 +1,14 @@
+.GlobalEnv
+package:igraph
+package:ergm
+package:network
+package:statnet.common
+tools:rstudio
+package:stats
+package:graphics
+package:grDevices
+package:utils
+package:datasets
+package:methods
+Autoloads
+package:base

@@ -1,0 +1,19 @@
+exportPattern("^[[:alpha:]]+")
+useDynLib(mfergm)
+import(
+  ergm,
+  network,
+  rootSolve
+)
+export(entropy)
+export(logconstant_mf)
+export(logconstant_mf2)
+export(mfcd)
+export(phi_mfcd)
+export(phi_prime_mfcd)
+export(loglikmf.model1)
+export(loglikmf.model2)
+export(loglikmf.model2wrap)
+export(initialize.network)
+export(simulate.model1)
+export(simulate.model2)

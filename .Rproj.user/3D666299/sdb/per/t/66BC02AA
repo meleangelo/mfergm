@@ -1,0 +1,16 @@
+{
+    "contents" : "#' solves Chatterjee-Diaconis 2013 variational problem for model with homogeneous players and\n#' only edges and 2-stars\n#' \n#' this function computes solutions to Chatterjee-Diaconis 2013 variational problem.\n#' Returns a matrix with solution (row 1) and first derivative at the solution (row 2)\n#' \n#' @param a parameter for edges term\n#' @param b parameter for 2-stars term\n#' \n#' @author Angelo Mele \n#' @examples \n#' mfcd(a = -2, b = 0.2)\n#' \n#' \nmfcd <- function(a, b) {    \n    solution<-uniroot.all(phi_mfcd, c(0.0000001, 0.99999999), tol = 0.0001, a = a, b = b)\n    derivative<-phi_prime_mfcd(solution, a, b)\n    mfcd <- rbind(solution,derivative)\n    return(mfcd)\n}\n\n\n",
+    "created" : 1444439696118.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2385465759",
+    "id" : "66BC02AA",
+    "lastKnownWriteTime" : 1444441157,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/mfergm/R/mfcd.R",
+    "project_path" : "R/mfcd.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

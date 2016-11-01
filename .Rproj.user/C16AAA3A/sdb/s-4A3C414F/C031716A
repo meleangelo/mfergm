@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "loglikmf.model2 <- function(theta, addpars) {\n#  loglikmf.model2 <- function(theta, n, tobs, x, ninit = 50) {\n    n <- addpars$n\n  tobs <- addpars$tobs\n  nnn<-5+n\n  x <- addpars$x\n  ninit <- addpars$ninit #[length(addpars)]\n  \n  # compute potential\n  potential <- as.numeric(theta[1]*tobs[1] + theta[2]*tobs[2] + 0.5*theta[3]*tobs[3])\n  ## mf approximationa\n  # attributes\n  \n  \n  # parameters location\n  p <- c(2,3)\n  q <- 1\n  \n  # change stats to use\n  dt <- matrix(0, ncol = 2, nrow = p[2])\n  dt[,1] <- c(1,1,1)\n  dt[,2] <- c(1,9,1)\n  \n  tol <- 0.0001\n  logc <- rep(0,ninit)\n  for (sim in 1:ninit) {\n    mu <- matrix(runif(n^2,0,1), nrow = n, ncol = n)\n    diag(mu) <- 0 \n    psi <- logconstant_mf2(p, mu, theta, x, dt, tol) \n    \n    logc[sim] <- psi$psi\n  }\n\n  psi_mf <- max(logc)\n\n  # compute log likelihood value\n  loglik <- potential - psi_mf\n  #loglik <- -loglik\n  return(loglik)\n}",
+    "created" : 1468590642638.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4127815283",
+    "id" : "C031716A",
+    "lastKnownWriteTime" : 1477679025,
+    "last_content_update" : 1477679025553,
+    "path" : "~/Dropbox/mfergm/programs/mfergm/R/loglikmf.model2.R",
+    "project_path" : "R/loglikmf.model2.R",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

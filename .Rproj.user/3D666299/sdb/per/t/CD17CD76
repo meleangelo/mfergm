@@ -1,0 +1,17 @@
+{
+    "contents" : "loglikmf.model1 <- function(theta, n, tobs, ninit = 50) {\n  ## mf approximation\n  logc <- rep(0,ninit)\n  for (sim in 1:ninit) {\n    mu <- matrix(runif(n^2,0,1), nrow = n, ncol = n)\n    diag(mu) <- 0 \n    psi <- logconstant_mf(p, mu, theta , x, dt, tol) \n    psi$psi\n    logc[sim] <- psi$psi\n  }\n\n  logc\n  sort(logc)\n  psi_mf <- max(logc)\n\n  # compute log likelihood value\n  loglik <- potential - psi_mf\n  loglik <- -loglik\n  return(loglik)\n}",
+    "created" : 1444475582630.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2622233413",
+    "id" : "CD17CD76",
+    "lastKnownWriteTime" : 1444487408,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/mfergm/R/loglikmf.model1.R",
+    "project_path" : "R/loglikmf.model1.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "loglikmf.model1 <- function(theta, n, tobs, ninit = 50) {\n  # compute potential\n  potential <- as.numeric(theta[1]*tobs[1] + 0.5*theta[2]*tobs[2])\n  ## mf approximationa\n  # attributes\n  x <- rnorm(n,0,1)\n  \n  # parameters location\n  p <- c(1,2)\n  q <- 1\n  \n  # change stats to use\n  dt <- matrix(0, ncol = p[2], nrow = 2)\n  dt[,1] <- c(1,1)\n  dt[,2] <- c(1,1)\n  \n  tol <- 0.0001\n  logc <- rep(0,ninit)\n  for (sim in 1:ninit) {\n    mu <- matrix(runif(n^2,0,1), nrow = n, ncol = n)\n    diag(mu) <- 0 \n    psi <- logconstant_mf(p, mu, theta , x, dt, tol) \n    \n    logc[sim] <- psi$psi\n  }\n\n  psi_mf <- max(logc)\n\n  # compute log likelihood value\n  loglik <- potential - psi_mf\n  #loglik <- -loglik\n  return(loglik)\n}",
+    "created" : 1444677602749.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3463756090",
+    "id" : "E1330920",
+    "lastKnownWriteTime" : 1445705484,
+    "last_content_update" : 0,
+    "path" : "C:/Users/amele1/Dropbox/mfergm/programs/mfergm/R/loglikmf.model1.R",
+    "project_path" : "R/loglikmf.model1.R",
+    "properties" : {
+    },
+    "relative_order" : 0,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
