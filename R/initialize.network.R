@@ -17,7 +17,7 @@
 #' 
 
 initialize.network <- function(theta, n, directed = FALSE) {
-  net <- network(matrix(rbinom(n^2,1,exp(theta[1]/(1+exp(theta[1]) )  )), 
+  net <- network(matrix(rbinom(n^2,1,exp(theta[1])/(1+exp(theta[1]) )  ), 
                  nrow = n, ncol = n), directed = FALSE)
   return(net)
 }
