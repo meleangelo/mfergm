@@ -11,13 +11,12 @@
 #' @param nsims number of simulated networks to estimate
 #' @param ninit number of trials for mean field approximation (if mfergm = TRUE)
 #' @param ergm logical, if FALSE will not perform ergm estimation
-#' @param cd logical, if FALSE will not perform Chatterjee-Diaconis estimation
 #' @param mfergm logical, if FALSE will not perform mean-field estimation
 #' @param mple logical, if FALSE will not perform MPLE estimation
 #' @param sim.seed seed for the random number generator
 
 simulate.model2 <- function(theta, n = 10, nsims = 2, ninit = 5,
-                            ergm = FALSE, cd = TRUE, mfergm = FALSE, mple = FALSE,
+                            ergm = FALSE, mfergm = TRUE, mple = FALSE,
                             sim.seed = 1977) {
   
   library(mfergm)
