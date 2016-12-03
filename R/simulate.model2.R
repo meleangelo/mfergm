@@ -80,8 +80,9 @@ simulate.model2 <- function(theta, n = 10, nsims = 2, ninit = 5,
       cat("***********************************\n")
       #set.seed(1977)
       formula <- g0[[i]] ~ edges + nodematch("x") + kstar(2)
-      m1ergm <- ergm(formula, estimate = "MLE",
+      m1ergm <- ergm(formula, estimate = "MLE", 
                      control=control.ergm(
+                       main.method = "Robbins-Monro",
                        MCMC.burnin=100000,
                        MCMC.interval=1000,
                        init = theta*c(2,2,1/n ))
