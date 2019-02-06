@@ -384,7 +384,14 @@ if (tvq==1) then
             dtfv = dtfv/nv
         !endif !(k0 .ne. iv)
     enddo !k0
-	
+!********************
+!* triangles 
+!*********************    
+else if  (tvq ==111) then
+	do k0=1,nv
+			dtfv = dtfv + muv(jv,k0)*muv(k0,iv) + muv(iv,k0)*muv(k0,jv)
+			dtfv = dtfv/nv
+	enddo ! k0		
 !!********************
 !!*    difference    *
 !!********************
@@ -1042,10 +1049,6 @@ else
 	dtfv=0.0
 endif
 
-!dtfv = dtfv/(nv*(nv-1)*(nv-2))
-!dtfv = dtfv/(nv*(nv-1))
-!dtfv = dtfv/10000.0
-
 return
 end function dtfv
 
@@ -1115,7 +1118,10 @@ if (tvq==1) then
             dtfvq = dtfvq + muv(jv,k0)/nv
         !endif !(k0 .ne. iv)
     enddo !k0
-	
+else if  (tvq==111) then
+	do k0=1,nv
+			dtfvq = dtfvq + muv(jv,k0)*muv(k0,iv)/nv 
+	enddo ! k0
 !!********************
 !!*    difference    *
 !!********************
