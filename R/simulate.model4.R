@@ -88,7 +88,7 @@ simulate.model4 <- function(theta, n = 10, nsims = 2, ninit = 5,
                        init = theta*c(2,2,1/n,1/n ))
       )
       est.params <- m1ergm$coef
-      estim.table[i,1:4] <- c(est.params[1:4,1])*c(.5,.5,n,n)
+      estim.table[i,1:4] <- est.params*c(.5,.5,n,n)
     }
   }
 
@@ -148,7 +148,7 @@ simulate.model4 <- function(theta, n = 10, nsims = 2, ninit = 5,
                        init = theta*c(2,2,1/n ,1/n))
       )
       est.params <- m1ergm$coef
-      estim.table[i,9:12] <- c(est.params[1:4,1])*c(.5,.5,n,n)
+      estim.table[i,9:12] <- est.params*c(.5,.5,n,n)
     }
   }
   
