@@ -82,12 +82,12 @@ simulate.model2 <- function(theta, n = 10, nsims = 2, ninit = 5,
       formula <- g0[[i]] ~ edges + nodematch("x") + kstar(2)
       m1ergm <- ergm(formula, estimate = "MLE", 
                      control=control.ergm(
-                       main.method = "Robbins-Monro",
+                       main.method = "Stochastic-Approximation",
                        MCMC.burnin=100000,
                        MCMC.interval=1000,
                        init = theta*c(2,2,1/n ))
       )
-      est.params <- summary(m1ergm)$coef
+      est.params <- m1ergm$coef
       estim.table[i,1:3] <- c(est.params[1:3,1])*c(.5,.5,n)
     }
   }
@@ -147,7 +147,7 @@ simulate.model2 <- function(theta, n = 10, nsims = 2, ninit = 5,
                        MCMC.interval=1000,
                        init = theta*c(2,2,1/n ))
       )
-      est.params <- summary(m1ergm)$coef
+      est.params <- m1ergm$coef
       estim.table[i,7:9] <- c(est.params[1:3,1])*c(.5,.5,n)
     }
   }
