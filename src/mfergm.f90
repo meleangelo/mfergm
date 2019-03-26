@@ -1965,7 +1965,8 @@ do t = 2,maxiterations
             if(i/=j) then
                 ! direct utility update
                 do kk=1,pp(1)
-                    dttemp(kk) = 2.0*dtfu(n,q,x,dt(kk,1),i,j,dt(kk,2)) 
+                    !dttemp(kk) = 2.0*dtfu(n,q,x,dt(kk,1),i,j,dt(kk,2)) 
+                    dttemp(kk) = dtfu(n,q,x,dt(kk,1),i,j,dt(kk,2)) 
                 enddo
                 ! indirect utility
                 do kk=pp(1)+1,pp(2)

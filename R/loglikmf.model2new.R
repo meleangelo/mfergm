@@ -23,11 +23,14 @@ loglikmf.model2new <- function(theta, addpars) {
   dt[,2] <- c(1,9,1)
   
   g <- as.sociomatrix(g)
+  Ixx <- x %*% t(x) + (1-x) %*% t(1-x)
   B  <- matrix(1, nrow = n, ncol =n) %*% g
   B <- B + t(B)
-  mu <- 2*theta[1] + 2*theta[2]*x + theta[2]*B/n
+  #mu <- 2*theta[1] + 2*theta[2]*Ixx + theta[2]*B/n
+  mu <- theta[1] + theta[2]*Ixx + theta[2]*B/n
   mu <- exp(mu)
   mu <- mu/(1+mu)
+  
   
   tol <- 0.0001
   logc <- rep(0,ninit)
