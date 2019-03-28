@@ -61,7 +61,7 @@ simulate.model3 <- function(theta, n = 10, nsims = 2, ninit = 5,
     formula <- g0[[i]] ~ edges + nodematch("x") + triangles
     #tobs[i,] <- summary(formula)/(c((n^2)/2, n^3))  
     tobs[i,] <- summary(formula)/(c((n^2)/2, (
-      n^2)/2, (n^3)/2 ))  
+      n^2)/2, (n^3)/6 ))  
   }
   cat(paste("observed stats", tobs, "\n"))
   # initialize data.frame with estimation results

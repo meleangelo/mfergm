@@ -390,6 +390,7 @@ if (tvq==1) then
 else if  (tvq ==111) then
 	do k0=1,nv
 			dtfv = dtfv + muv(jv,k0)*muv(k0,iv) + muv(iv,k0)*muv(k0,jv)
+			!dtfv = dtfv + 3.0*muv(jv,k0)*muv(k0,iv) 
 			dtfv = dtfv/nv
 	enddo ! k0		
 !!********************
@@ -1965,8 +1966,7 @@ do t = 2,maxiterations
             if(i/=j) then
                 ! direct utility update
                 do kk=1,pp(1)
-                    !dttemp(kk) = 2.0*dtfu(n,q,x,dt(kk,1),i,j,dt(kk,2)) 
-                    dttemp(kk) = dtfu(n,q,x,dt(kk,1),i,j,dt(kk,2)) 
+                    dttemp(kk) = 2.0*dtfu(n,q,x,dt(kk,1),i,j,dt(kk,2)) 
                 enddo
                 ! indirect utility
                 do kk=pp(1)+1,pp(2)
@@ -2020,7 +2020,7 @@ subroutine sstat(ps,ns,qs,mu,x,dts,ts)
 !        given a vector of change statistics
 !
 ! INPUT
-! ps   = vector with number of suff stats (ppu,ppm,ppv) (INTEGER(3))
+! ps   = vector with number of suff stats (ppu,ppv) (INTEGER(2))
 ! ns   = number of players (INTEGER)
 ! qs   = number of variables in xxx (columns of xxx), INTEGER
 ! mu    = matrix mu with the network (real, dimension(ns,ns))

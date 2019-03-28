@@ -26,6 +26,7 @@ loglikmf.model3 <- function(theta, addpars) {
   for (sim in 1:ninit) {
     mu <- matrix(runif(n^2,0,1), nrow = n, ncol = n)
     diag(mu) <- 0 
+    mu[lower.tri(mu)] = t(mu)[lower.tri(mu)]
     psi <- logconstant_mf2(p, mu, theta, x, dt, tol) 
     
     logc[sim] <- psi$psi
