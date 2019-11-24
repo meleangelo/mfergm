@@ -120,7 +120,7 @@ simulate.model4 <- function(theta, n = 10, nsims = 2, ninit = 5,
       cat("***********************************\n")
       pars <- theta
       addpars <- list(n = n,tobs = tobs[i,],x=x,ninit= ninit)
-      cd.est <- optimx(pars, fn = loglikmf.model3, 
+      cd.est <- optimx(pars, fn = loglikmf.model4, 
                        method = "BFGS", 
                        control = list(fnscale = -1), addpars = addpars)
                        #list(n = n,
