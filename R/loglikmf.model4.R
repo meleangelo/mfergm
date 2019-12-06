@@ -7,7 +7,7 @@ loglikmf.model4 <- function(theta, addpars) {
   ninit <- addpars$ninit #[length(addpars)]
   
   # compute potential
-  potential <- as.numeric(theta[1]*tobs[1] + theta[2]*tobs[2] + 0.5*theta[3]*tobs[3] +  (theta[4]/6)*tobs[4])
+  potential <- as.numeric(theta[1]*tobs[1] + theta[2]*tobs[2] + 0.5*theta[3]*tobs[3] +  (2*theta[4]/3)*tobs[4])
   ## mf approximationa
   # attributes
   
